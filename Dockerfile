@@ -52,6 +52,13 @@ RUN set -eux; \
 	apk add --no-cache --virtual .phpexts-rundeps $runDeps; \
 	\
 	apk del .build-deps
+	
+ARG XDEBUG_VERSION=2.9.8
+RUN set -eux; \
+	apk add --no-cache --virtual .build-deps $PHPIZE_DEPS; \
+	pecl install xdebug-$XDEBUG_VERSION; \
+	docker-php-ext-enable xdebug; \
+	apk del .build-deps
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
