@@ -6,12 +6,12 @@ namespace App\Calculator;
 
 class Calculator
 {
-    public function add(float $a, float $b): float
+    public function add(int $a, int $b): int
     {
         return $a + $b;
     }
 
-    public function isNegative(float $a): bool
+    public function isNegative(int $a): bool
     {
         return $a < 0;
     }
